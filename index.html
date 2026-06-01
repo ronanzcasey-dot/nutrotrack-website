@@ -395,6 +395,10 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 700px) {
+      .hero-screenshots { gap: 12px !important; }
+      .hero-screenshots > div { width: 44vw !important; }
+    }
+    @media (max-width: 700px) {
       nav { padding: 0 20px; }
       .nav-links { gap: 18px; }
       .nav-links a:not(.nav-cta) { display: none; }
@@ -437,7 +441,7 @@
     </a>
     <a href="#features" class="btn-secondary">See features ↓</a>
   </div>
-  <div style="display:flex;justify-content:center;gap:24px;align-items:flex-start;margin-top:64px;">
+  <div class="hero-screenshots" style="display:flex;justify-content:center;gap:24px;align-items:flex-start;margin-top:64px;">
     <div style="width:260px;border-radius:32px;box-shadow:0 32px 80px rgba(0,0,0,0.6);overflow:hidden;"><img src="screenshot-analyzing.PNG" alt="Analyzing with AI" style="width:100%;display:block;margin-top:-36px;" /></div>
     <div style="width:260px;border-radius:32px;box-shadow:0 32px 80px rgba(0,0,0,0.6);overflow:hidden;margin-top:48px;"><img src="screenshot-results.PNG" alt="AI Food Estimator results" style="width:100%;display:block;margin-top:-36px;" /></div>
   </div>
