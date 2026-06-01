@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nutro AI: Calorie & Macro Tracker</title>
+  <meta name="description" content="Nutro is a clean, fast calorie and macro tracker for iPhone. Log your meals, hit your goals, and track your progress, all in one place." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:     #FF3B30;
+      --red-dim: #cc2e24;
+      --bg:      #0a0a0a;
+      --surface: #141414;
+      --card:    #1a1a1a;
+      --border:  rgba(255,255,255,0.08);
+      --text:    #f5f5f5;
+      --muted:   #888;
+      --radius:  20px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 64px;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-logo-icon {
+      height: 32px;
+      width: auto;
+      object-fit: contain;
+    }
+    .footer-logo-icon {
+      height: 26px;
+      width: auto;
+      object-fit: contain;
+    }
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--text); }
+    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .nav-cta {
+      background: var(--red);
+      color: #fff !important;
+      padding: 9px 20px;
+      border-radius: 100px;
+      font-weight: 600 !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--red-dim) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 280px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,59,48,0.12);
+      border: 1px solid rgba(255,59,48,0.3);
+      color: var(--red);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+      letter-spacing: 0.3px;
+    }
+    .hero-badge::before { content: '●'; font-size: 8px; }
+    h1 {
+      font-size: clamp(44px, 7vw, 84px);
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+    }
+    .accent { color: var(--red); }
+    .hero-sub {
+      font-size: clamp(17px, 2.2vw, 21px);
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.6;
+      margin-bottom: 48px;
+      font-weight: 400;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--red);
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 16px 32px;
+      border-radius: 100px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: var(--red-dim); transform: translateY(-1px); }
+    .btn-primary svg { width: 20px; height: 20px; fill: #fff; flex-shrink: 0; }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid var(--border);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 15px 28px;
+      border-radius: 100px;
+      transition: background 0.2s;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.12); }
+
+    /* ── SCREENSHOTS ── */
+    .screenshots {
+      padding: 100px 24px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-size: clamp(32px, 4.5vw, 54px);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0 auto 60px;
+      line-height: 1.6;
+    }
+    /* ── SCREENSHOT ROWS ── */
+    .ss-hero-row {
+      display: flex;
+      gap: 28px;
+      justify-content: center;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    .ss-secondary-row {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      align-items: flex-end;
+      flex-wrap: wrap;
+    }
+    .ss-phone {
+      flex-shrink: 0;
+      transition: transform 0.25s ease;
+    }
+    .ss-phone:hover { transform: translateY(-8px); }
+    .ss-phone.featured .phone-shell { width: 230px; }
+    .ss-phone.small   .phone-shell { width: 170px; }
+    .phone-shell {
+      background: #1c1c1e;
+      border-radius: 44px;
+      padding: 11px;
+      border: 1.5px solid rgba(255,255,255,0.12);
+      box-shadow:
+        0 40px 80px rgba(0,0,0,0.7),
+        inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+    .phone-screen {
+      border-radius: 34px;
+      overflow: hidden;
+      background: #111;
+      aspect-ratio: 1206/2342;
+    }
+    .phone-screen img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center bottom;
+      display: block;
+    }
+    .screenshot-caption {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      margin-top: 14px;
+      letter-spacing: 0.2px;
+      text-align: center;
+    }
+
+    /* ── FEATURES ── */
+    .features {
+      padding: 100px 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .features-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+    }
+    .feature-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .feature-card:hover {
+      border-color: rgba(255,59,48,0.3);
+      transform: translateY(-2px);
+    }
+    .feature-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: -0.3px;
+    }
+    .feature-card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── MACRO PILLS ── */
+    .macro-strip {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding: 0 24px 80px;
+    }
+    .macro-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .macro-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      margin: 0 24px 100px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      background: linear-gradient(135deg, rgba(255,59,48,0.15) 0%, rgba(255,59,48,0.05) 100%);
+      border: 1px solid rgba(255,59,48,0.25);
+      border-radius: 28px;
+      padding: 64px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(255,59,48,0.12) 0%, transparent 70%);
+      top: -100px;
+      right: -100px;
+      pointer-events: none;
+    }
+    .cta-banner h2 {
+      font-size: clamp(28px, 4vw, 46px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+    .cta-banner p {
+      font-size: 17px;
+      color: var(--muted);
+      margin-bottom: 36px;
+      max-width: 420px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      text-align: center;
+    }
+    .footer-logo {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    footer p {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+    .footer-links a {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--text); }
+    .support-link {
+      color: var(--red) !important;
+      font-weight: 600;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      nav { padding: 0 20px; }
+      .nav-links { gap: 18px; }
+      .nav-links a:not(.nav-cta) { display: none; }
+      .screenshots-row .side { display: none; }
+      .screenshot-frame.center { transform: none; }
+      .cta-banner { padding: 44px 28px; margin: 0 16px 80px; }
+      footer { flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo"><img src="logo.png" alt="Nutro dumbbell" class="nav-logo-icon" /><span>Nutro<span class="accent">AI</span></span></div>
+  <div class="nav-links">
+    <a href="#features">Features</a>
+    <a href="mailto:nutrotrack@gmail.com">Support</a>
+    <a href="#download" class="nav-cta">Download</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge" style="position:absolute;top:100px;">Available on the App Store</div>
+  <h1>Track your food.<br><span class="accent">Completely free.</span></h1>
+  <div style="position:relative;width:100%;height:0;pointer-events:none;"><div style="position:absolute;left:50%;transform:translateX(-50%);top:-320px;width:1200px;height:500px;background:radial-gradient(ellipse,rgba(255,59,48,0.25) 0%,transparent 70%);"></div></div>
+  <p style="font-size:15px;font-weight:500;color:var(--muted);margin-top:-8px;margin-bottom:36px;letter-spacing:1.5px;text-transform:uppercase;">How it should be.</p>
+  <p class="hero-sub">
+    NutroAI is a free calorie and macro tracker. <strong>No paywalls. No premium tier. No rate limits.</strong>
+    Use AI to log your meals instantly, improve your diet, and receive personalised recommendations.
+  </p>
+  <div class="hero-actions">
+    <a href="#download" class="btn-primary" id="download">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+      </svg>
+      Download on the App Store
+    </a>
+    <a href="#features" class="btn-secondary">See features ↓</a>
+  </div>
+  <div style="display:flex;justify-content:center;gap:24px;align-items:flex-start;margin-top:64px;">
+    <div style="width:260px;border-radius:32px;box-shadow:0 32px 80px rgba(0,0,0,0.6);overflow:hidden;"><img src="screenshot-analyzing.PNG" alt="Analyzing with AI" style="width:100%;display:block;margin-top:-36px;" /></div>
+    <div style="width:260px;border-radius:32px;box-shadow:0 32px 80px rgba(0,0,0,0.6);overflow:hidden;margin-top:48px;"><img src="screenshot-results.PNG" alt="AI Food Estimator results" style="width:100%;display:block;margin-top:-36px;" /></div>
+  </div>
+</section>
+
+
+<!-- SCREENSHOTS -->
+<section class="screenshots" id="screenshots" style="position:relative;overflow:hidden;">
+  <div style="position:absolute;left:50%;transform:translateX(-50%);top:20px;width:1000px;height:400px;background:radial-gradient(ellipse,rgba(255,59,48,0.2) 0%,transparent 70%);pointer-events:none;"></div>
+  <div class="section-label">In the app</div>
+  <h2 class="section-title">Everything you need,<br>nothing you don't</h2>
+  <p class="section-sub">Clean and customizable interface designed to work the best for you.</p>
+
+  <!-- Main hero screenshot -->
+  <div class="ss-hero-row">
+    <div class="ss-phone featured">
+      <div class="phone-shell">
+        <div class="phone-screen">
+          <img src="screenshots/img_9346.png" alt="Today dashboard" />
+        </div>
+      </div>
+      <div class="screenshot-caption">Today</div>
+    </div>
+    <div class="ss-phone featured">
+      <div class="phone-shell">
+        <div class="phone-screen">
+          <img src="screenshots/img_9352.png" alt="Daily history" />
+        </div>
+      </div>
+      <div class="screenshot-caption">Daily History</div>
+    </div>
+    <div class="ss-phone featured">
+      <div class="phone-shell">
+        <div class="phone-screen">
+          <img src="screenshots/img_9353.png" alt="Statistics" />
+        </div>
+      </div>
+      <div class="screenshot-caption">Statistics</div>
+    </div>
+  </div>
+
+  <!-- Secondary row -->
+  <div class="ss-secondary-row">
+    <div class="ss-phone small">
+      <div class="phone-shell">
+        <div class="phone-screen">
+          <img src="screenshots/img_9351.png" alt="Recommended intake" />
+        </div>
+      </div>
+      <div class="screenshot-caption">Recommended Intake</div>
+    </div>
+    <div class="ss-phone small">
+      <div class="phone-shell">
+        <div class="phone-screen">
+          <img src="screenshots/img_9348.png" alt="Profile" />
+        </div>
+      </div>
+      <div class="screenshot-caption">Your Profile</div>
+    </div>
+    <div class="ss-phone small">
+      <div class="phone-shell">
+        <div class="phone-screen">
+          <img src="screenshots/img_9344.png" alt="Splash screen" />
+        </div>
+      </div>
+      <div class="screenshot-caption">Welcome</div>
+    </div>
+    <div class="ss-phone small">
+      <div class="phone-shell">
+        <div class="phone-screen">
+          <img src="screenshots/img_9349.png" alt="Notifications" />
+        </div>
+      </div>
+      <div class="screenshot-caption">Notifications</div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features" style="position:relative;overflow:hidden;">
+  <div style="position:absolute;left:50%;transform:translateX(-50%);top:20px;width:1000px;height:400px;background:radial-gradient(ellipse,rgba(255,59,48,0.2) 0%,transparent 70%);pointer-events:none;"></div>
+  <div class="features-header">
+    <div class="section-label">Why Nutro</div>
+    <h2 class="section-title">Built for people who<br>want results</h2>
+    <p class="section-sub">No subscription paywalls. Just fast, honest nutrition tracking.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <h3>Log in seconds</h3>
+      <p>Search thousands of foods instantly. Barcode scanner, custom foods, and a smart database so you're never stuck.</p>
+    </div>
+    <div class="feature-card">
+      <h3>AI food recommendations</h3>
+      <p>Get personalised food suggestions based on your goals, macros, and what you've already eaten that day.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Trends & streaks</h3>
+      <p>See your week and month at a glance. Spot patterns, celebrate streaks, and stay on track long-term.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Smart reminders</h3>
+      <p>Personalised notifications that tell you exactly what percent of your goal you've hit, and nudge you when you're falling behind.</p>
+    </div>
+    <div class="feature-card">
+      <h3>AI food estimator</h3>
+      <p>Not sure about the calories in a meal? Describe it and let AI estimate the macros for you instantly.</p>
+    </div>
+    <div class="feature-card">
+      <h3>AI-researched diet suggestions</h3>
+      <p>Backed by nutritional research, Nutro's AI surfaces diet insights tailored to your body stats and goals.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <h2>Start tracking today.<br>It's free.</h2>
+  <p>Download Nutro and hit your calorie and macro goals, without the complexity.</p>
+  <a href="#download" class="btn-primary">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width:20px;height:20px;fill:#fff;flex-shrink:0;">
+      <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+    </svg>
+    Download on the App Store
+  </a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><img src="logo.png" alt="" class="footer-logo-icon" />Nutro<span class="accent">AI</span></div>
+  <p style="color:var(--muted);font-size:13px;margin-left:auto;">© 2026 Nutro AI. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="mailto:nutrotrack@gmail.com" class="support-link">Contact Support</a>
+    <a href="mailto:nutrotrack@gmail.com">nutrotrack@gmail.com</a>
+  </div>
+</footer>
+
+<script>
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+
+  // Subtle entrance animation on scroll
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.feature-card, .screenshot-frame, .cta-banner').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
