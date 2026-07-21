@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Nutro AI</title>
+  <meta name="description" content="Privacy Policy for the Nutro AI calorie and macro tracking app." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --red: #FF3B30; --red-dim: #cc2e24; --bg: #0a0a0a; --surface: #141414;
+      --card: #1a1a1a; --border: rgba(255,255,255,0.08); --text: #f5f5f5; --muted: #888;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 64px;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-size: 20px; font-weight: 800; letter-spacing: -0.5px; color: var(--text); text-decoration: none; }
+    .accent { color: var(--red); }
+    nav a.back { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; }
+    nav a.back:hover { color: var(--text); }
+    main { max-width: 720px; margin: 0 auto; padding: 64px 24px 100px; }
+    .doc-header { margin-bottom: 40px; }
+    .doc-header .label { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--red); margin-bottom: 12px; }
+    h1 { font-size: clamp(30px, 5vw, 44px); font-weight: 800; letter-spacing: -1px; margin-bottom: 10px; }
+    .updated { font-size: 13px; color: var(--muted); }
+    .summary {
+      margin-top: 24px; padding: 18px 20px; border-radius: 16px;
+      background: rgba(255,59,48,0.08); border: 1px solid rgba(255,59,48,0.25);
+      font-size: 14.5px; line-height: 1.7; color: #e8e8e8;
+    }
+    section { margin-bottom: 30px; }
+    h2 { font-size: 18px; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.2px; }
+    p { font-size: 15px; line-height: 1.7; color: #cfcfcf; margin-bottom: 10px; }
+    p:last-child { margin-bottom: 0; }
+    strong { color: var(--text); }
+    ul { margin: 0 0 10px 20px; }
+    li { font-size: 15px; line-height: 1.7; color: #cfcfcf; margin-bottom: 4px; }
+    table { width: 100%; border-collapse: collapse; margin: 12px 0 16px; font-size: 14px; }
+    th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); color: #cfcfcf; }
+    th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+    footer {
+      border-top: 1px solid var(--border); padding: 32px 40px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    footer p, footer a { font-size: 13px; color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+    .footer-links { display: flex; gap: 24px; }
+    @media (max-width: 600px) {
+      nav { padding: 0 20px; }
+      footer { flex-direction: column; text-align: center; padding: 32px 20px; }
+      table { font-size: 12.5px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Nutro<span class="accent">AI</span></a>
+  <a href="/" class="back">← Back to home</a>
+</nav>
+
+<main>
+  <div class="doc-header">
+    <div class="label">Legal</div>
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: July 20, 2026</p>
+    <div class="summary">
+      <strong>Summary:</strong> Nutro is designed to be private by default. Your food logs, photos, weight, and health data are stored on your device and, if you sign in, synced to your personal iCloud account — not to servers we operate. When you use AI features, the content of your request (which may include food names, photos, and nutrition context) is sent to a third-party AI provider to generate a response. Nutro shows ads (via Google AdMob) to free users and offers an optional ad-free subscription.
+    </div>
+  </div>
+
+  <section>
+    <h2>1. Who We Are</h2>
+    <p>This Privacy Policy describes how Nutro AI ("Nutro," "we," "us"), operated by Ronan Casey, handles information in connection with the Nutro iOS application (the "App"). It is incorporated into our <a href="/terms-of-service/" style="color:var(--red);">Terms of Service</a>. If you do not agree with this policy, do not use the App.</p>
+  </section>
+
+  <section>
+    <h2>2. Information the App Handles</h2>
+    <p><strong>Data you provide in the App.</strong> Food entries, meal photos, calorie and nutrition logs, body weight and measurements, dietary goals and preferences, and notes. This data is stored locally on your device and, if you sign in and enable sync, in your personal iCloud account via Apple CloudKit.</p>
+    <p><strong>Account data.</strong> Signing in is optional but enables cross-device sync. You can sign in with Sign in with Apple, Google Sign-In, or email, handled via Firebase Authentication (Google). We receive a unique account identifier and, depending on the method you choose, a name and email address, used solely to identify your account and sync your data.</p>
+    <p><strong>Apple HealthKit data.</strong> With your explicit permission, the App can read from and write to Apple HealthKit (e.g., weight, dietary energy, nutrients). HealthKit data is used solely to provide App features you request. We do not use HealthKit data for advertising or marketing, do not sell it, and do not share it with third parties, including AI providers, except as you direct within the App (for example, when you ask the AI Coach about your logged data).</p>
+    <p><strong>AI queries.</strong> When you use AI features (food analysis, the AI Coach Diet Check-In, AI-assisted food editing, or AI chat), the content of your request — which may include food names, meal photos, your questions, and nutritional context you have entered — is transmitted to a third-party AI provider to generate a response. See Section 3.</p>
+    <p><strong>Barcode and food lookups.</strong> When you scan a barcode or search for a food, the barcode number or search term is sent to third-party nutrition databases to retrieve product information.</p>
+    <p><strong>Advertising data.</strong> Nutro displays ads through Google AdMob to support the free version of the app, including during AI-powered features such as the AI Coach Diet Check-In and AI-assisted food editing. AdMob may collect device identifiers (such as the Apple advertising identifier, IDFA, if you grant tracking permission) and general usage data to serve and measure ads. You will be shown Apple's App Tracking Transparency prompt before any tracking-based advertising identifier is used; if you decline, Nutro shows non-personalized ads instead. See AdMob's own policies for details on its data practices.</p>
+    <p><strong>Purchase data.</strong> Optional ad-free subscriptions are processed by Apple. We receive transaction confirmations from Apple but never your payment card details.</p>
+    <p><strong>Device and diagnostic data.</strong> The App does not use third-party analytics or crash-reporting SDKs beyond what is required for account sign-in (Firebase Authentication) and advertising (Google AdMob), described above.</p>
+    <p><strong>Support communications.</strong> If you contact us at nutrotrack@gmail.com, we receive your email address and the contents of your message.</p>
+    <p><strong>What we do not do:</strong> We do not require an account to use most features. We do not collect your precise location. We do not sell personal information, and we do not "share" it for cross-context behavioral advertising beyond the AdMob advertising described above.</p>
+  </section>
+
+  <section>
+    <h2>3. AI Providers</h2>
+    <p>AI features are powered by third-party providers. The default provider, and the providers you may optionally use with your own API key, are currently:</p>
+    <table>
+      <tr><th>Provider</th><th>Service</th><th>Role</th></tr>
+      <tr><td>Google LLC</td><td>Gemini API</td><td>Default provider</td></tr>
+      <tr><td>Groq, Inc.</td><td>Groq API</td><td>Used for select features (e.g. AI Coach Diet Check-In)</td></tr>
+      <tr><td>OpenAI, L.L.C.</td><td>OpenAI API</td><td>Optional (your own key)</td></tr>
+      <tr><td>Anthropic, PBC</td><td>Claude API</td><td>Optional (your own key)</td></tr>
+      <tr><td>xAI Corp.</td><td>Grok API</td><td>Optional (your own key)</td></tr>
+    </table>
+    <p>This list may change; the current list is always shown in the App's AI settings and in the latest version of this policy.</p>
+    <p><strong>How queries travel.</strong> Default-provider queries are routed through a proxy service we operate on Cloudflare Workers, which forwards your request and is not designed to retain its contents. If you configure your own API key, your queries go directly from your device to that provider, and we never see them.</p>
+    <p><strong>Provider retention.</strong> AI providers may log requests for a limited period for abuse detection and security, as described in their own privacy policies, which govern their handling of your queries. Do not include information in AI queries that you would not share with these providers — for example, avoid including your name, contact details, or health conditions in chat messages.</p>
+    <p><strong>Your API keys.</strong> Keys you supply are stored on your device in the iOS Keychain and are not transmitted to us.</p>
+  </section>
+
+  <section>
+    <h2>4. How We Use Information</h2>
+    <p>We use the information described above only to: provide and operate App features you request (logging, analysis, AI responses and suggested edits, sync); process optional subscription purchases through Apple; serve and measure ads through Google AdMob; respond to support requests; maintain the security of the App and our proxy service; and comply with legal obligations. We do not sell your information, and we do not use health-related data for advertising.</p>
+  </section>
+
+  <section>
+    <h2>5. How Information Is Shared</h2>
+    <p>We share information only: (a) with the AI providers and nutrition databases described above, at your direction, to fulfill your requests; (b) with service providers acting on our behalf, including Cloudflare (AI proxy infrastructure), Google Firebase (authentication), Apple CloudKit (iCloud sync), and Google AdMob (advertising); (c) if required by law, subpoena, or to protect rights, safety, or the integrity of the App; and (d) in connection with a merger, acquisition, or sale of assets, in which case this policy will continue to apply to previously collected data or you will be notified of changes. We never sell personal information, and we never share HealthKit or health-related data with data brokers or marketers.</p>
+  </section>
+
+  <section>
+    <h2>6. Data Retention and Deletion</h2>
+    <p>Because your data lives on your device and, if you sign in, in your personal iCloud account, you control it directly: you can delete individual entries in the App, sign out, or delete the App and its iCloud data via iOS Settings to remove your data entirely. Our AI proxy is not designed to retain query contents. Support emails are retained only as long as needed to resolve your request. AI providers retain queries per their own policies (typically limited-duration abuse-detection logs).</p>
+  </section>
+
+  <section>
+    <h2>7. Your Privacy Rights</h2>
+    <p>Depending on where you live, you may have rights to know what personal information we handle, to access, correct, or delete it, to opt out of certain advertising, and to be free from discrimination for exercising these rights. Because Nutro stores your data on your device and in your personal iCloud account rather than on servers we operate, most requests can be fulfilled directly in the App (view, edit, delete). For anything else — including advertising opt-outs beyond the in-app App Tracking Transparency prompt, or account deletion assistance — contact us at nutrotrack@gmail.com and we will respond within 45 days.</p>
+  </section>
+
+  <section>
+    <h2>8. Children</h2>
+    <p>The App is not directed to children and is not intended for users under 18. We do not knowingly collect personal information from anyone under 13, and AdMob is configured to avoid personalized advertising to users who identify as under the age of consent in their jurisdiction. If you believe a child has provided us with personal information, contact us at nutrotrack@gmail.com.</p>
+  </section>
+
+  <section>
+    <h2>9. Security</h2>
+    <p>We use reasonable technical and organizational safeguards, including transport encryption (TLS) for all network requests, on-device storage protected by iOS security features, Keychain storage for API keys, and a proxy designed not to retain query contents. No system is perfectly secure; you use the App at your own risk, and you are responsible for securing your device and Apple ID.</p>
+  </section>
+
+  <section>
+    <h2>10. Changes to This Policy</h2>
+    <p>We may update this policy from time to time. The current version and effective date are always available in the App and at this page. If we make material changes — especially any change to how health-related data is handled — we will notify you in the App and, where required, seek your consent before the change applies to you.</p>
+  </section>
+
+  <section>
+    <h2>11. Contact</h2>
+    <p>Ronan Casey — Nutro AI<br>
+    <a href="mailto:nutrotrack@gmail.com" style="color:var(--red);">nutrotrack@gmail.com</a></p>
+  </section>
+</main>
+
+<footer>
+  <p>© 2026 Nutro AI. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="/terms-of-service/">Terms of Service</a>
+    <a href="mailto:nutrotrack@gmail.com">nutrotrack@gmail.com</a>
+  </div>
+</footer>
+
+</body>
+</html>
