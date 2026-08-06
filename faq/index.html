@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ — Nutro AI</title>
+  <meta name="description" content="Frequently asked questions about the Nutro AI calorie and macro tracking app." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --red: #FF3B30; --red-dim: #cc2e24; --bg: #0a0a0a; --surface: #141414;
+      --card: #1a1a1a; --border: rgba(255,255,255,0.08); --text: #f5f5f5; --muted: #888;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 64px;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-size: 20px; font-weight: 800; letter-spacing: -0.5px; color: var(--text); text-decoration: none; }
+    .accent { color: var(--red); }
+    nav a.back { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; }
+    nav a.back:hover { color: var(--text); }
+    main { max-width: 720px; margin: 0 auto; padding: 64px 24px 100px; }
+    .doc-header { margin-bottom: 40px; }
+    .doc-header .label { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--red); margin-bottom: 12px; }
+    h1 { font-size: clamp(30px, 5vw, 44px); font-weight: 800; letter-spacing: -1px; margin-bottom: 10px; }
+    .subtitle { font-size: 15px; color: var(--muted); line-height: 1.6; }
+
+    .faq-list { display: flex; flex-direction: column; gap: 10px; margin-top: 36px; }
+    details.faq-item {
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+      padding: 4px 20px; transition: border-color 0.2s;
+    }
+    details.faq-item[open] { border-color: rgba(255,59,48,0.3); }
+    summary {
+      list-style: none; cursor: pointer; padding: 18px 0;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      font-size: 15.5px; font-weight: 600; color: var(--text);
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary .icon {
+      flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%;
+      background: rgba(255,59,48,0.12); color: var(--red);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: 400; transition: transform 0.2s;
+    }
+    details[open] summary .icon { transform: rotate(45deg); }
+    .faq-answer { padding: 0 0 20px; font-size: 14.5px; line-height: 1.75; color: #cfcfcf; }
+    .faq-answer p { margin-bottom: 10px; }
+    .faq-answer p:last-child { margin-bottom: 0; }
+    .faq-answer a { color: var(--red); text-decoration: none; }
+    .faq-answer a:hover { text-decoration: underline; }
+
+    .category-label {
+      font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--muted); margin: 36px 0 4px;
+    }
+    .category-label:first-of-type { margin-top: 0; }
+
+    .contact-cta {
+      margin-top: 48px; padding: 24px; border-radius: 16px;
+      background: rgba(255,59,48,0.08); border: 1px solid rgba(255,59,48,0.25);
+      text-align: center;
+    }
+    .contact-cta p { font-size: 14.5px; color: #e8e8e8; margin-bottom: 14px; }
+    .contact-cta a.btn {
+      display: inline-block; background: var(--red); color: #fff; text-decoration: none;
+      padding: 11px 24px; border-radius: 100px; font-weight: 600; font-size: 14px;
+      transition: background 0.2s;
+    }
+    .contact-cta a.btn:hover { background: var(--red-dim); }
+
+    footer {
+      border-top: 1px solid var(--border); padding: 32px 40px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    footer p, footer a { font-size: 13px; color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+    .footer-links { display: flex; gap: 24px; }
+    @media (max-width: 600px) {
+      nav { padding: 0 20px; }
+      footer { flex-direction: column; text-align: center; padding: 32px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Nutro<span class="accent">AI</span></a>
+  <a href="/" class="back">← Back to home</a>
+</nav>
+
+<main>
+  <div class="doc-header">
+    <div class="label">Help</div>
+    <h1>Frequently Asked Questions</h1>
+    <p class="subtitle">Everything you need to know about using Nutro. Can't find your answer? <a href="mailto:nutrotrack@gmail.com" style="color:var(--red);">Email support</a>.</p>
+  </div>
+
+  <div class="category-label">Getting started</div>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>What is Nutro?<span class="icon">+</span></summary>
+      <div class="faq-answer">
+        <p>Nutro is a calorie and macro tracker for iPhone. Log meals by searching a food database, scanning a barcode, or describing a meal to the AI estimator, then track calories, protein, carbs, and fat against your daily goals, with trends and streaks to keep you on track.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary>Is Nutro free?<span class="icon">+</span></summary>
+      <div class="faq-answer">
+        <p>Yes. Nutro is free to download and use, and shows ads to support the free version. An optional ad-free subscription is available if you'd prefer no ads.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary>Do I need to create an account?<span class="icon">+</span></summary>
+      <div class="faq-answer">
+        <p>No, most features work without signing in. Creating an account (with Sign in with Apple, Google, or email) is optional and only needed if you want your logs synced across devices via iCloud.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary>What devices does Nutro support?<span class="icon">+</span></summary>
+      <div class="faq-answer">
+        <p>Nutro is built for iPhone (iOS). There isn't an Android or web version currently.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="category-label">Logging food</div>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>How does the AI food estimator work?<span class="icon">+</span></summary>
+      <div class="faq-answer">
+        <p>Describe a meal in plain language (or snap a photo) and Nutro sends that description to an AI provider, which returns an estimated calorie and macro breakdown. It's a fast estimate, not a lab measurement, so results can vary from the exact nutrition facts, especially for home-cooked or mixed dishes.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary>Why does the AI feature sometimes feel slow or occasionally fail?<span class="icon">+</span></summary>
+      <div class="faq-answer">
+        <p>AI responses are generated by a third-party AI provider, and requests can briefly queue or fail during periods of high demand on their end. If an AI request fails, just try again in a moment. This doesn't affect manual logging, food search, or barcode scanning, which don't depend on the AI provider.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary>How do I scan a barcode?<span class="icon">+</span></summary>
+      <div class="faq-answer">
+        <p>Tap the barcode icon when adding a food and point your camera at the product barcode. Nutro looks up the product in a nutrition database and fills in the details automatically.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary>Can I add my own custom foods or recipes?<span class="icon">+</span></summary>
+      <div class="faq-answer">
+        <p>Yes, you can create custom foods with your own nutrition values so they're ready to log again later.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="category-label">Data & privacy</div>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>Where is my data stored?<span class="icon">+</span></summary>
+      <div class="faq-answer">
+        <p>Your food logs, photos, weight, and goals are stored on your device and, if you sign in, synced to your personal iCloud account, not to servers we operate. Full details are in the <a href="/privacy-policy/">Privacy Policy</a>.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary>Does Nutro share my data with AI providers?<span class="icon">+</span></summary>
+      <div class="faq-answer">
+        <p>Only the content of a specific AI request (e.g. a food description, photo, or question) is sent to the AI provider handling that request, in order to generate a response. It isn't used for advertising. See the <a href="/privacy-policy/">Privacy Policy</a> for the current list of providers.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary>Can I sync with Apple Health?<span class="icon">+</span></summary>
+      <div class="faq-answer">
+        <p>Yes, with your permission Nutro can read and write data like weight and dietary energy to Apple HealthKit. This is used only to power features you request, not for advertising.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary>How do I delete my data?<span class="icon">+</span></summary>
+      <div class="faq-answer">
+        <p>You can delete individual entries in the app, or delete the app itself along with its iCloud data via iOS Settings to remove everything. For account deletion help, contact <a href="mailto:nutrotrack@gmail.com">nutrotrack@gmail.com</a>.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="category-label">Subscription & support</div>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>How do I cancel my subscription?<span class="icon">+</span></summary>
+      <div class="faq-answer">
+        <p>Subscriptions are managed by Apple. Go to iPhone Settings → your name → Subscriptions, select Nutro, and cancel there.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary>I found a bug or have feedback, who do I contact?<span class="icon">+</span></summary>
+      <div class="faq-answer">
+        <p>Email <a href="mailto:nutrotrack@gmail.com">nutrotrack@gmail.com</a> with what happened, and a screenshot if you have one. That's the fastest way to reach support.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="contact-cta">
+    <p>Still have a question?</p>
+    <a href="mailto:nutrotrack@gmail.com" class="btn">Contact Support</a>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 Nutro AI. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="/privacy-policy/">Privacy Policy</a>
+    <a href="/terms-of-service/">Terms of Service</a>
+    <a href="mailto:nutrotrack@gmail.com">nutrotrack@gmail.com</a>
+  </div>
+</footer>
+
+</body>
+</html>
